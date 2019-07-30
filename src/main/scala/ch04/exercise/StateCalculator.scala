@@ -18,5 +18,5 @@ object StateCalculator {
   def evalAll(input: List[String]): CalcState[Int] = input.foldLeft(State.inspect((_: List[Int]) => 0)) { (a, b) =>
     a.flatMap(_ => evalOne(b))
   }
-  
+
 }
