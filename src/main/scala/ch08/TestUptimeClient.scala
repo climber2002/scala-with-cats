@@ -1,9 +1,9 @@
 package ch08
-import scala.concurrent.Future
 
-class TestUptimeClient(hosts: Map[String, Int]) extends UptimeClient {
-  override def getUptime(hostname: String): Future[Int] =
-    Future.successful(hosts.getOrElse(hostname, 0))
+import cats.Id
+
+class TestUptimeClient(hosts: Map[String, Int]) extends UptimeClient[Id] {
+  override def getUptime(hostname: String): Id[Int] = hosts.getOrElse(hostname, 0)
 }
 
 object TestUptimeClient {
